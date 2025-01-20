@@ -1,10 +1,12 @@
 import { screen, waitFor } from '@testing-library/react'
-
 import { fetchAlgoliaData } from 'api/fetchAlgoliaData'
+import { axe, toHaveNoViolations } from 'jest-axe'
 import { ChapterDetailsPage } from 'pages'
 import { render } from 'wrappers/testUtil'
 
 import { mockChapterData } from '@tests/data/mockChapterData'
+
+expect.extend(toHaveNoViolations)
 
 jest.mock('api/fetchAlgoliaData', () => ({
   fetchAlgoliaData: jest.fn(),
@@ -24,6 +26,18 @@ describe('ChapterDetailsPage Component', () => {
 
   afterEach(() => {
     jest.clearAllMocks()
+  })
+
+  test('should not have any accessibility violations', async () => {
+    const { container } = render(<ChapterDetailsPage />)
+
+    // Wait for content to load
+    await waitFor(() => {
+      expect(screen.queryByText('Loading indicator')).not.toBeInTheDocument()
+    })
+
+    const results = await axe(container)
+    expect(results).toHaveNoViolations()
   })
 
   test('renders loading spinner initially', async () => {
