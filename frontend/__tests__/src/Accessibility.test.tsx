@@ -1,4 +1,5 @@
-import { render, waitFor } from '@testing-library/react'
+// Accessibility.test.tsx
+import { render, waitFor, act } from '@testing-library/react'
 import App from 'App'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import React from 'react'
@@ -19,9 +20,13 @@ describe('Accessibility Tests', () => {
   jest.setTimeout(30000)
 
   it('App should have no accessibility violations', async () => {
-    const { container } = renderWithRouter(App)
-
-    await waitFor(() => container)
+    let container;
+    
+    await act(async () => {
+      const rendered = renderWithRouter(App)
+      container = rendered.container
+      await waitFor(() => container)
+    })
 
     const results = await axe(container)
     expect(results).toHaveNoViolations()
@@ -33,9 +38,13 @@ describe('Accessibility Tests', () => {
 
   describe.each(pages)('Testing individual pages', ({ component: PageComponent, name }) => {
     it(`${name} should have no accessibility violations`, async () => {
-      const { container } = renderWithRouter(PageComponent)
-
-      await waitFor(() => container)
+      let container;
+      
+      await act(async () => {
+        const rendered = renderWithRouter(PageComponent)
+        container = rendered.container
+        await waitFor(() => container)
+      })
 
       const results = await axe(container)
       expect(results).toHaveNoViolations()
