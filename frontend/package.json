@@ -16,7 +16,7 @@
     "test": "tsc --noEmit && NODE_OPTIONS=--no-warnings=DEP0040 jest",
     "test:coverage": "jest --coverage && chmod +x scripts/open-coverage.sh && scripts/open-coverage.sh",
     "watch": "jest --watch",
-    "test:a11y": "jest --config jest.config.ts --testMatch='**/*.test.{ts,tsx}'",
+    "test:a11y": "jest -c jest.config.ts --testPathPattern=__tests__/src/accessibility.test.tsx",
     "test:a11y:watch": "jest --config jest.config.ts --testMatch='**/*.test.{ts,tsx}' --watch"
   },
   "dependencies": {

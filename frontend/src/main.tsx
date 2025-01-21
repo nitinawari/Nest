@@ -1,6 +1,5 @@
 import axe from '@axe-core/react'
-import { StrictMode } from 'react'
-import React from 'react'
+import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
 import { createRoot } from 'react-dom/client'
 import './index.css'
@@ -19,8 +18,8 @@ const tagManagerArgs = {
 
 TagManager.initialize(tagManagerArgs)
 
-if (process.env.NODE_ENV !== 'production') {
-  axe(React, ReactDOM, 1000) // Logs violations to the browser console
+if (process.env.NODE_ENV !== 'development') {
+  axe(React, ReactDOM, 1000)
 }
 
 createRoot(document.getElementById('root')!).render(

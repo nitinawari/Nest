@@ -17,6 +17,7 @@ global.axe = {
 }
 
 beforeEach(() => {
+  window.scrollTo = jest.fn()
   jest.spyOn(console, 'error').mockImplementation((...args) => {
     throw new Error(`Console error: ${args.join(' ')}`)
   })
