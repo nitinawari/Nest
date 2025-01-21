@@ -21,7 +21,7 @@ describe('Accessibility Tests', () => {
 
   it('App should have no accessibility violations', async () => {
     let container;
-    
+
     await act(async () => {
       const rendered = renderWithRouter(App)
       container = rendered.container
@@ -39,7 +39,7 @@ describe('Accessibility Tests', () => {
   describe.each(pages)('Testing individual pages', ({ component: PageComponent, name }) => {
     it(`${name} should have no accessibility violations`, async () => {
       let container;
-      
+
       await act(async () => {
         const rendered = renderWithRouter(PageComponent)
         container = rendered.container
