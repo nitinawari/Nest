@@ -68,6 +68,17 @@ const ProjectDetailsPage = () => {
   const toggleLanguages = () => setShowAllLanguages(!showAllLanguages)
   const toggleTopics = () => setShowAllTopics(!showAllTopics)
 
+  const handleContributorClick = (contributorLogin: string) => {
+    navigate(`/community/users/${contributorLogin}`)
+  }
+
+  const handleContributorKeyDown = (event: React.KeyboardEvent, contributorLogin: string) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      navigate(`/community/users/${contributorLogin}`)
+    }
+  }
+
   return (
     <div className="mt-16 min-h-screen bg-white p-8 text-gray-600 dark:bg-[#212529] dark:text-gray-300">
       <div className="mx-auto max-w-6xl">
@@ -202,12 +213,11 @@ const ProjectDetailsPage = () => {
               ? project.top_contributors
               : project.top_contributors.slice(0, 6)
             ).map((contributor, index) => (
-              <div
+              <button
                 key={index}
-                className="flex cursor-pointer items-center"
-                onClick={() => {
-                  navigate(`/community/users/${contributor.login}`)
-                }}
+                className="flex w-full items-center rounded-lg p-2 text-left transition-colors hover:bg-gray-200 focus:bg-gray-200 focus:outline-none dark:hover:bg-gray-700 dark:focus:bg-gray-700"
+                onClick={() => handleContributorClick(contributor.login)}
+                onKeyDown={(e) => handleContributorKeyDown(e, contributor.login)}
               >
                 <img
                   src={contributor.avatar_url}
@@ -220,7 +230,7 @@ const ProjectDetailsPage = () => {
                     {contributor.contributions_count} contributions
                   </p>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
           {project.top_contributors.length > 5 && (
