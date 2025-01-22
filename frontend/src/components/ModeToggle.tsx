@@ -1,6 +1,8 @@
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState, useEffect } from 'react'
+import { Tooltip } from 'react-tooltip'
+import { themeToggleTooltip } from 'utils/constants'
 
 import { cn } from 'utils/utility'
 
@@ -33,8 +35,13 @@ function ModeToggle({ className }: { className?: string }) {
         aria-hidden="true"
       />
       <label
+       
         htmlFor="theme-toggle"
         className="relative inline-flex cursor-pointer items-center"
+      
+        data-tooltip-id="mode-toggle-tooltip"
+        data-tooltip-place="bottom-start"
+        data-tooltip-content={dark ? 'Enable light mode' : 'Enable dark mode'}
       >
         <input
           id="theme-toggle"
@@ -50,6 +57,7 @@ function ModeToggle({ className }: { className?: string }) {
         />
         <span className="sr-only">Toggle dark mode</span>
       </label>
+      <Tooltip id="mode-toggle-tooltip" style={themeToggleTooltip} />
     </div>
   )
 }
