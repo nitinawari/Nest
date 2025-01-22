@@ -4,7 +4,18 @@ import App from 'App'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import { ChaptersPage } from 'pages/index'
+import {
+  Home,
+  ProjectsPage,
+  CommitteesPage,
+  ChaptersPage,
+  ContributePage,
+  CommitteeDetailsPage,
+  ChapterDetailsPage,
+  ProjectDetailsPage,
+  UsersPage,
+  UserDetailsPage,
+ } from 'pages/index'
 
 expect.extend(toHaveNoViolations)
 
@@ -34,6 +45,15 @@ describe('Accessibility Tests', () => {
 
   const pages = [
     { component: ChaptersPage, name: 'ChapterPage' },
+    { component: Home, name: 'Home' },
+    { component: CommitteesPage, name: 'CommitteesPage' },
+    { component: ProjectsPage, name: 'ProjectsPage' },
+    { component: ContributePage, name: 'ContributePage' },
+    { component: CommitteeDetailsPage, name: 'CommitteeDetailsPage' },
+    { component: ChapterDetailsPage, name: 'ChapterDetailsPage' },
+    { component: UsersPage, name: 'UsersPage' },
+    { component: ProjectDetailsPage, name: 'ProjectDetailsPage' },
+    { component: UserDetailsPage, name: 'UserDetailsPage' },
   ]
 
   describe.each(pages)('Testing individual pages', ({ component: PageComponent, name }) => {
