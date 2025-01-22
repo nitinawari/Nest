@@ -35,10 +35,10 @@ function ModeToggle({ className }: { className?: string }) {
         aria-hidden="true"
       />
       <label
-       
+
         htmlFor="theme-toggle"
         className="relative inline-flex cursor-pointer items-center"
-      
+
         data-tooltip-id="mode-toggle-tooltip"
         data-tooltip-place="bottom-start"
         data-tooltip-content={dark ? 'Enable light mode' : 'Enable dark mode'}
