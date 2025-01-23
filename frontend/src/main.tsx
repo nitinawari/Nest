@@ -18,7 +18,7 @@ const tagManagerArgs = {
 
 TagManager.initialize(tagManagerArgs)
 
-if (process.env.NODE_ENV !== 'development') {
+if (process.env.NODE_ENV !== 'production') {
   axe(React, ReactDOM, 1000)
 }
 
