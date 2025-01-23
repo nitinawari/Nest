@@ -56,18 +56,18 @@ describe('Accessibility Tests', () => {
     { component: UserDetailsPage, name: 'UserDetailsPage' },
   ]
 
-  describe.each(pages)('Testing individual pages', ({ component: PageComponent, name }) => {
-    it(`${name} should have no accessibility violations`, async () => {
-      let container;
+ describe.each(pages)('Testing individual pages', ({ component: PageComponent, name }) => {
+  it(`${name} should have no accessibility violations`, async () => {
+    const { container } = renderWithRouter(PageComponent);
 
-      await act(async () => {
-        const rendered = renderWithRouter(PageComponent)
-        container = rendered.container
-        await waitFor(() => container)
-      })
+    // Remove the specific data-testid check
+    await waitFor(() => {
+      // Wait for some rendering to complete
+      expect(container.firstChild).not.toBeNull();
+    });
 
-      const results = await axe(container)
-      expect(results).toHaveNoViolations()
-    })
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   })
+})
 })
