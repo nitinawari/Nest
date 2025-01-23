@@ -1,7 +1,5 @@
-import React from 'react'
 import { render } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe'
-import { MemoryRouter } from 'react-router-dom'
 
 // Import all pages
 import {
@@ -17,6 +15,8 @@ import {
   UserDetailsPage,
 } from 'pages'
 
+import React from 'react'
+import { MemoryRouter } from 'react-router-dom'
 // Helper function to wrap components with necessary providers
 const renderWithProviders = (Component: React.ComponentType) => {
   return render(
