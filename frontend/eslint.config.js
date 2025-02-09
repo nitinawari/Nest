@@ -7,6 +7,7 @@ import typescriptParser from '@typescript-eslint/parser'
 import prettierConfig from 'eslint-config-prettier'
 import importPlugin from 'eslint-plugin-import'
 import jest from 'eslint-plugin-jest'
+import jsxA11y from 'eslint-plugin-jsx-a11y'
 import prettier from 'eslint-plugin-prettier'
 import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
@@ -41,6 +42,7 @@ export default [
       jest,
       prettier,
       react,
+      'jsx-a11y': jsxA11y
     },
     settings: {
       'import/resolver': {
@@ -78,7 +80,6 @@ export default [
             { pattern: 'lib/**', group: 'internal', position: 'after' },
             { pattern: 'components/**', group: 'internal', position: 'after' },
             { pattern: 'pages/**', group: 'internal', position: 'after' },
-
             { pattern: '@tests/**', group: 'internal', position: 'after' },
           ],
           pathGroupsExcludedImportTypes: ['builtin'],
@@ -87,6 +88,28 @@ export default [
       'no-console': 'error',
       'no-unused-vars': 'off',
       'import/no-relative-parent-imports': 'error',
+      'jsx-a11y/alt-text': 'error',
+      'jsx-a11y/anchor-has-content': 'error',
+      'jsx-a11y/anchor-is-valid': ['error', { components: ['Link'], specialLink: ['to'], aspects: ['invalidHref', 'preferButton'] }],
+      'jsx-a11y/click-events-have-key-events': 'error',
+      'jsx-a11y/no-static-element-interactions': 'error',
+      'jsx-a11y/no-noninteractive-element-interactions': 'error',
+      'jsx-a11y/label-has-associated-control': 'error',
+      'jsx-a11y/interactive-supports-focus': 'error',
+      'jsx-a11y/tabindex-no-positive': 'error',
+      'jsx-a11y/aria-unsupported-elements': 'error',
+      'jsx-a11y/no-autofocus': 'warn',
+      'jsx-a11y/no-access-key': 'error',
+      'jsx-a11y/aria-role': ['error', { ignoreNonDOM: false }],
+      'jsx-a11y/aria-props': 'error',
+      'jsx-a11y/aria-proptypes': 'error',
+      'jsx-a11y/aria-activedescendant-has-tabindex': 'error',
+      'jsx-a11y/media-has-caption': 'warn',
+      'jsx-a11y/heading-has-content': 'error',
+      'jsx-a11y/no-redundant-roles': 'error',
+      'jsx-a11y/html-has-lang': 'error',
+      'jsx-a11y/iframe-has-title': 'error',
+      'jsx-a11y/no-distracting-elements': ['error', { elements: ['marquee', 'blink'] }],
     },
     ignores: ['src/utils/logger.ts'],
   },
