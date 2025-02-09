@@ -42,7 +42,7 @@ export default [
       jest,
       prettier,
       react,
-      'jsx-a11y': jsxA11y
+      'jsx-a11y': jsxA11y,
     },
     settings: {
       'import/resolver': {
@@ -90,7 +90,10 @@ export default [
       'import/no-relative-parent-imports': 'error',
       'jsx-a11y/alt-text': 'error',
       'jsx-a11y/anchor-has-content': 'error',
-      'jsx-a11y/anchor-is-valid': ['error', { components: ['Link'], specialLink: ['to'], aspects: ['invalidHref', 'preferButton'] }],
+      'jsx-a11y/anchor-is-valid': [
+        'error',
+        { components: ['Link'], specialLink: ['to'], aspects: ['invalidHref', 'preferButton'] },
+      ],
       'jsx-a11y/click-events-have-key-events': 'error',
       'jsx-a11y/no-static-element-interactions': 'error',
       'jsx-a11y/no-noninteractive-element-interactions': 'error',

@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import App from 'App'
 import { useToast } from 'hooks/useToast'
-import { axe, toHaveNoViolations } from "jest-axe";
+import { axe, toHaveNoViolations } from 'jest-axe'
 import { MemoryRouter } from 'react-router-dom'
 import '@testing-library/jest-dom'
 import { Toaster } from 'components/ui/Toaster'
@@ -30,7 +30,6 @@ jest.mock('hooks/useToast', () => ({
 }))
 
 expect.extend(toHaveNoViolations)
-
 
 jest.mock('components/Header', () => {
   const { Link } = require('react-router-dom')
@@ -189,15 +188,14 @@ describe('Toaster Component', () => {
   })
 })
 
-
-describe("App Accessibility Tests", () => {
-  it("should have no accessibility violations", async () => {
+describe('App Accessibility Tests', () => {
+  it('should have no accessibility violations', async () => {
     const { container } = render(
       <MemoryRouter>
         <App />
       </MemoryRouter>
-    );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
-  });
-});
+    )
+    const results = await axe(container)
+    expect(results).toHaveNoViolations()
+  })
+})

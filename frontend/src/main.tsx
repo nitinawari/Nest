@@ -1,9 +1,9 @@
 import { ApolloProvider } from '@apollo/client'
-import axe from "@axe-core/react"
+import axe from '@axe-core/react'
 import { ChakraProvider } from '@chakra-ui/react'
-import React from "react"
+import React from 'react'
 import { StrictMode } from 'react'
-import ReactDOM from "react-dom"
+import ReactDOM from 'react-dom'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import TagManager from 'react-gtm-module'
@@ -22,8 +22,8 @@ const tagManagerArgs = {
 
 TagManager.initialize(tagManagerArgs)
 
-if (process.env.NODE_ENV !== "production") {
-  axe(React, ReactDOM, 1000);
+if (process.env.NODE_ENV !== 'production') {
+  axe(React, ReactDOM, 1000)
 }
 
 createRoot(document.getElementById('root')!).render(
